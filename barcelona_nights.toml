@@ -4,7 +4,7 @@ format = """
 [](color_orange)\
 $username\
 $hostname\
-$ip\
+$localip\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -26,12 +26,14 @@ $conda\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
+$cmd_duration\
 $line_break$character"""
 
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
+color_fg0_bright = '#ffffff'
 color_bg1 = '#3c3836'
 color_bg3 = '#665c54'
 color_blue = '#458588'
@@ -42,37 +44,24 @@ color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 
-[os]
+[cmd_duration]
+show_milliseconds=true
+
+[localip]
+ssh_only = false
 disabled = false
 style = "bg:color_orange fg:color_fg0"
+format = '[ @ $localipv4]($style)'
 
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-EndeavourOS = ""
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
+[hostname]
+style = "bg:color_orange fg:color_fg0_bright"
+format = '[$hostname]($style)'
 
 [username]
 show_always = true
 style_user = "bg:color_orange fg:color_fg0"
 style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user ]($style)'
+format = '[ $user @ ]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
